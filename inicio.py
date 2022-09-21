@@ -11,7 +11,7 @@ class agentaTelefonica:
     def verNumero(self):
         return self.__numero
     
-    def verdireccion(self):
+    def verDireccion(self):
         return self.__direccion
     
     #métodos SETTER
@@ -21,5 +21,5 @@ class agentaTelefonica:
     def modificarNumero(self,nuevoNumero):
         self.__numero= nuevoNumero
     
-    def modificardireccion(self,nuevadireccion):
-        self.__direccion=nuevadireccion
+    def modificardireccion(self,nuevaDireccion):
+        self.__direccion=nuevaDireccion

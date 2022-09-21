@@ -1,77 +1,97 @@
 from inicio import agentaTelefonica
-registro=[]
+misContactos=[]
 
 #Crear contactos
-def nuevocontacto(nombreCliente, numero, direccion):
-    registro.append(agentaTelefonica(nombreCliente, numero, direccion))
+def NuevoContacto(nombre, numero, direccion):
+    misContactos.append(agentaTelefonica(nombre, numero, direccion))
+
+def BuscarContacto(nombre):
+    if len(misContactos) ==0:
+        print('la lista esta vacia, no hay contactos')
+    else:
+        encontrado = False
+        for i in range(len(misContactos)):
+            if misContactos[i].verNombre() == nombre:
+                print('el telefono es ', misContactos[i].verNumero())
+                print('la direccion es ', misContactos[i].verDireccion())
+                encontrado = True
+                break 
+       
 
 #mostrar contactos
-def mostrarcontactos():
-    for i in range(len(registro)):
-        print(registro[i].verNombre())
-        print(registro[i].verNumero())
-        print(registro[i].verdireccion())
-    print('------------------------------------------')
+def MostrarContactos():
+    for i in range(len(misContactos)):
+        print(misContactos[i].verNombre())
+        print(misContactos[i].verNumero())
+        print(misContactos[i].verDireccion())
+    
 
  #buscar y modificar contacto
-def BuscarModificar(nombreCliente, nuevaDireccion):
+def ModificarContacto(nombre, nuevaDireccion):
     posicion=None
-    for indice in range (len(registro)):
-        if nombreCliente==registro[indice].verNombre():
+    for indice in range (len(misContactos)):
+        if nombre == misContactos[indice].verNombre():
             posicion = indice
             break
-    if posicion==None:
+    if posicion == None:
         return 'El cliente ingresado no existe'
     else:
-        registro[posicion].modificardireccion(nuevaDireccion)
+        misContactos[posicion].modificardireccion(nuevaDireccion)
         return 'Datos del cliente actualizados con éxito'
 
 #Buscar y eliminar
-def buscaryeliminar(nombreCliente):
+def EliminarContacto(nombre):
     posicion= None
-    for m in range(len(registro)):
-        if nombreCliente == registro[m].verNombre():
+    for m in range(len(misContactos)):
+        if nombre == misContactos[m].verNombre():
             posicion= m
             break
     if posicion==None:
         return 'El cliente no existe'
     else:
-        registro.pop(posicion)
+        misContactos.pop(posicion)
         return 'Cliente eliminado con éxito'
+
+
 
 def main():
     op=0
-    while op!=5:
-        print('AGENDA TELEFÓNICA \n',
-        '1. Crear contacto \n',
-        '2. Ver contactos \n',
-        '3. Modificar contactos \n',
-        '4. Eliminar contacto\n',
-        '5. Salir del programa\n')
+    while op!=6:
+        print('-----------AGENDA TELEFÓNICA------------- \n',
+        '1. Crear contacto \n'
+        '2. buscar contacto \n',
+        '3. Ver contactos \n',
+        '4. Modificar contactos \n',
+        '5. Eliminar contacto\n',
+        '6. Salir del programa\n')
         op=int(input('Ingrese una opción del menú: '))
         if op==1:
             nombre=input('Ingrese nombre: ')
             numero=int(input('Ingrese número de telefono: '))
             direccion=input('Ingrese direccion cliente: ')
-            nuevocontacto(nombre, numero, direccion)
+            NuevoContacto(nombre, numero, direccion)
             print('contacto creado')
             print('----------------------------------------------')
-        
+
         elif op==2:
-            mostrarcontactos()
-            print('')
+            nombre=input('ingrese nombre del contacto: ')
+            BuscarContacto(nombre)
         
         elif op==3:
-            nombre=input('Ingrese el nombre del cliente: ')
-            nuevadireccion=input('Ingrese nueva dirección: ')
-            print(BuscarModificar(nombre,nuevadireccion))
-            print('------------------------------------------------------')
+            MostrarContactos()
+            print('')
         
         elif op==4:
             nombre=input('Ingrese el nombre del cliente: ')
-            print(buscaryeliminar(nombre))
+            nuevadireccion=input('Ingrese nueva dirección: ')
+            print(ModificarContacto(nombre,nuevadireccion))
             print('------------------------------------------------------')
+        
         elif op==5:
+            nombre=input('Ingrese el nombre del cliente: ')
+            print(EliminarContacto(nombre))
+            print('------------------------------------------------------')
+        elif op==6:
             print('################# FIN DEL PROGRAMA ##################')
         else:
             print('Número de opción no válido')

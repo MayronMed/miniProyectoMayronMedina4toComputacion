@@ -16,16 +16,15 @@ def BuscarContacto(nombre):
                 print('la direccion es ', misContactos[i].verDireccion())
                 encontrado = True
                 break 
-       
+
 
 #mostrar contactos
 def MostrarContactos():
     for i in range(len(misContactos)):
-        print(misContactos[i].verNombre())
-        print(misContactos[i].verNumero())
-        print(misContactos[i].verDireccion())
+        print('Nombre: ',misContactos[i].verNombre())
+        print('Numero: ',misContactos[i].verNumero())
+        print('Direccion: ',misContactos[i].verDireccion())
     
-
  #buscar y modificar contacto
 def ModificarContacto(nombre, nuevaDireccion):
     posicion=None
@@ -52,18 +51,20 @@ def EliminarContacto(nombre):
         misContactos.pop(posicion)
         return 'Cliente eliminado con éxito'
 
-
+def crearReporte():
+    print('crear reporte')
 
 def main():
     op=0
-    while op!=6:
+    while op!=7:
         print('-----------AGENDA TELEFÓNICA------------- \n',
         '1. Crear contacto \n'
-        '2. buscar contacto \n',
+        '2. Buscar contacto \n',
         '3. Ver contactos \n',
         '4. Modificar contactos \n',
-        '5. Eliminar contacto\n',
-        '6. Salir del programa\n')
+        '5. Eliminar contacto\n'
+        '6. Reporte en HTML',
+        '7. Salir del programa\n')
         op=int(input('Ingrese una opción del menú: '))
         if op==1:
             nombre=input('Ingrese nombre: ')
@@ -79,7 +80,7 @@ def main():
         
         elif op==3:
             MostrarContactos()
-            print('')
+            print('--------------------------------------')
         
         elif op==4:
             nombre=input('Ingrese el nombre del cliente: ')
@@ -91,7 +92,11 @@ def main():
             nombre=input('Ingrese el nombre del cliente: ')
             print(EliminarContacto(nombre))
             print('------------------------------------------------------')
+
         elif op==6:
+            crearReporte()
+
+        elif op==7:
             print('################# FIN DEL PROGRAMA ##################')
         else:
             print('Número de opción no válido')

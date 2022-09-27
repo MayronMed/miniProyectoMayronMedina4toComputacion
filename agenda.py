@@ -1,3 +1,4 @@
+from io import inicio
 from inicio import agentaTelefonica
 misContactos=[]
 
@@ -52,8 +53,18 @@ def EliminarContacto(nombre):
         return 'Cliente eliminado con éxito'
 
 def crearReporte():
-    print('crear reporte')
-
+    documento = open("reporte contacto.HTML","w")
+    documento.write("<!doctype html>\n")
+    documento.write("<html>\n")
+    documento.write("<head>\n")
+    documento.write("<title>Agenda 2022</title>\n")
+    documento.write("</head>\n")
+    documento.write("<body>\n")
+    documento.write("\t<h1>mis contactos</h1>\n")
+    documento.write("</body>\n")
+    documento.write("</html>\n")
+    documento.close()
+    print('reporte HTML creado con exito...')
 def main():
     op=0
     while op!=7:

@@ -1,4 +1,4 @@
-from io import inicio
+from io import open
 from inicio import agentaTelefonica
 misContactos=[]
 
@@ -86,7 +86,7 @@ def main():
         '3. Ver contactos \n',
         '4. Modificar contactos \n',
         '5. Eliminar contacto\n'
-        '6. Reporte en HTML',
+        '6. Reporte en HTML\n',
         '7. Salir del programa\n')
         op=int(input('Ingrese una opción del menú: '))
         if op==1:
@@ -95,7 +95,7 @@ def main():
             direccion=input('Ingrese direccion cliente: ')
             NuevoContacto(nombre, numero, direccion)
             print('contacto creado')
-            print('----------------------------------------------')
+            print('----------------------------------------------\n')
 
         elif op==2:
             nombre=input('ingrese nombre del contacto: ')
@@ -103,21 +103,24 @@ def main():
         
         elif op==3:
             MostrarContactos()
-            print('--------------------------------------')
+            print('--------------------------------------\n')
         
         elif op==4:
             nombre=input('Ingrese el nombre del cliente: ')
             nuevadireccion=input('Ingrese nueva dirección: ')
             print(ModificarContacto(nombre,nuevadireccion))
-            print('------------------------------------------------------')
+            print('----------------contacto modificado--------------------')
+            print('------------------------------------------------------\n')
         
         elif op==5:
             nombre=input('Ingrese el nombre del cliente: ')
             print(EliminarContacto(nombre))
-            print('------------------------------------------------------')
+            print('------------------contacto eliminado-----------------')
+            print('------------------------------------------------------\n')
 
         elif op==6:
             crearReporte()
+
 
         elif op==7:
             print('################# FIN DEL PROGRAMA ##################')
